@@ -1,0 +1,2 @@
+DROP DATABASE IF EXISTS botb_db;
+CREATE DATABASE botb_db;
