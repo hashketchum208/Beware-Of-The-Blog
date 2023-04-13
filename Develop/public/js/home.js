@@ -6,7 +6,7 @@ const newPostHandler = async (event) => {
   const content = document.querySelector("#new-post-content").value.trim();
 
   // Send a POST request to the API endpoint
-  const response = await fetch(`/api/post`, {
+  const response = await fetch(`/api/postRoutes`, {
     method: "POST",
     body: JSON.stringify({ title, content }),
     headers: { "Content-Type": "application/json" },
