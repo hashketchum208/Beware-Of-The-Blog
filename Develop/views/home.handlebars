@@ -1,27 +1,24 @@
-<div class="header">
-  <h2>Recent Sightings and Stories</h2>
-</div>
-
-<div class="row">
-  <div class="leftcolumn">
+{{#each post as |posts| }}
+<div class="post">
     <div class="card">
-      <h3>Share your experience</h3>
-            <div class="form-group">
-      <label for="exampleFormControlTextarea3"></label>
-      <textarea class="form-control" id="title" rows="1"></textarea>
-      <div class="form-group">
-      <label for="exampleFormControlTextarea3"></label>
-      <textarea class="form-control" id="content" rows="7"></textarea>
-      <button type="button" class="btn btn-success">Submit</button>
+        <div class="card-content">
+            <div class="media">
+                <div class="media-content">
+                    <p class="title is-4">{{posts.title}} by: {{posts.user.username}}</p>
+                </div>
+            </div>
+            <div class="content">
+                {{posts.contents}}
+                <br>
+                <time datetime='{{posts.date_created}}'>{{posts.date_created}}</time>
+            </div>
+        </div>
     </div>
-    </div>
+    {{#each posts.comments as |comments| }}
     <div class="card">
-      <h3>Follow Me</h3>
-      <p>Some text..</p>
+        <p>{{comments.text}}</p>
+        <p>By: {{comments.user.username}}</p>
     </div>
-  </div>
+    {{/each}}
 </div>
-
-<div class="footer">
-  <h2>Leo Pignanelli -- </h2>
-</div>
+{{/each}}

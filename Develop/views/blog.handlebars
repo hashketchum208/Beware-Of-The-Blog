@@ -1,0 +1,45 @@
+<div class="card">
+    <form action="submit" id="postForm">
+        <label for="post">create a post here</label>
+        <input class="input" type="text" id="title" placeholder="title your post">
+        <input class="input" type="text" id="post" placeholder="write here">
+        <button onclick="newPost(event)" class="button is-link">Create Post</button>
+    </form>
+</div>
+
+{{#each post as |posts| }}
+<div class="post">
+    <div class="card">
+        <div class="card-content">
+            <div class="media">
+                <div class="media-content">
+                    <p class="title is-4">{{posts.title}} by: {{posts.user.username}}</p>
+                </div>
+            </div>
+            <div class="content">
+                {{posts.contents}}
+                <br>
+                <time datetime='{{posts.date_created}}'>{{posts.date_created}}</time>
+            </div>
+            <div class="editButtons">
+                <button class="update" data-post-id="{{posts.id}}">update</button>
+                <button class="remove" data-post-id="{{posts.id}}">delete</button>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <form action="submit" class="commentForm" id="{{posts.id}}">
+            <input class="input comment" type="text" placeholder="comment here">
+        </form>
+    </div>
+    {{!-- renders each comment --}}
+    {{#each posts.comments as |comments| }}
+    <div class="card">
+        <p>{{comments.text}}</p>
+        <p>by: {{comments.user.username}}</p>
+    </div>
+    {{/each}}
+</div>
+{{/each}}
+
+<script src="/js/blog.js"></script>
