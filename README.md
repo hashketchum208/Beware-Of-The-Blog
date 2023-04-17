@@ -11,3 +11,4 @@ API Routes to perform RESTful CRUD operations, seed the database, and sync Seque
 
 ## Deployment
 
+beware-of-the-blog-production.up.railway.app
