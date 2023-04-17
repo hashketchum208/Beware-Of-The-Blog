@@ -6,7 +6,7 @@ const newPost = async (event) => {
   const date_created = new Date();
 
   if (contents) {
-    const response = await fetch(`/api/posts/`, {
+    const response = await fetch(`/api/post/`, {
       method: 'POST',
       body: JSON.stringify({ title, contents, date_created }),
       headers: {
@@ -15,7 +15,7 @@ const newPost = async (event) => {
     });
 
     if (response.ok) {
-      document.location.replace('/blog');
+      document.location.replace('../../views/blog.handlebars');
     } else {
       alert('cannot create post');
     }
@@ -25,7 +25,7 @@ const newPost = async (event) => {
 
 
 document
-  .querySelector('#postForm')
+  .querySelector('.postForm')
   .addEventListener('submit', newPost);
 
 // update
@@ -61,7 +61,7 @@ document
         },
       });
       if (response.ok) {
-        document.location.replace('/blog')
+        document.location.replace('../../views/blog.handlebars')
       } else {
         alert('failed to update')
       }
